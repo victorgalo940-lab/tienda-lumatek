@@ -18,10 +18,13 @@ const supabase = createClient(
 const transporter = nodemailer.createTransport({
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
-    secure: true, // true para puerto 465
+    secure: process.env.SMTP_PORT == 465, // true para 465, false para 587
     auth: {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS
+    },
+    tls: {
+        rejectUnauthorized: false // Ayuda con algunos problemas de certificados en nubes
     }
 });
 

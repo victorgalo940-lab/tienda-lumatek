@@ -2,6 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
 const { Resend } = require('resend');
+const dns = require('dns');
+
+// Forzar IPv4 para evitar errores de red en Render (ENETUNREACH IPv6)
+if (dns.setDefaultResultOrder) {
+    dns.setDefaultResultOrder('ipv4first');
+}
 
 const app = express();
 app.use(express.json());

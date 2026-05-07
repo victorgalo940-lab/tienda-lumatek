@@ -9,8 +9,17 @@ if (dns.setDefaultResultOrder) {
     dns.setDefaultResultOrder('ipv4first');
 }
 
+const path = require('path');
+
 const app = express();
 app.use(express.json());
+app.use(express.static('public'));
+
+// Ruta explícita para servir la Landing Page
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 
 const port = process.env.PORT || 5000;
 

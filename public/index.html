@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumatek | Automatización de Constancias</title>
+    <!-- Open Graph Tags for Social Media -->
+    <meta property="og:title" content="Lumatek: Sistema de Constancias Automatizado">
+    <meta property="og:description" content="Ahorra horas de trabajo administrativo con el sistema de generación y validación de constancias líder en México.">
+    <meta property="og:image" content="https://i.imgur.com/BOrNfV5.png">
+    <meta property="og:url" content="https://tienda-lumatek.onrender.com">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #004aad;
+            --secondary: #cb6ce6;
+            --accent: #ff914d;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.05);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at 0% 0%, rgba(0, 74, 173, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(203, 108, 230, 0.15) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        @media (max-width: 968px) {
+            .container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-content {
+                order: 2;
+            }
+            .hero-image {
+                order: 1;
+            }
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--secondary);
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1 span {
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .description {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            margin-bottom: 40px;
+            max-width: 500px;
+        }
+
+        @media (max-width: 968px) {
+            .description {
+                margin: 0 auto 40px auto;
+            }
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 968px) {
+            .cta-group {
+                justify-content: center;
+            }
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            padding: 18px 36px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 74, 173, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 74, 173, 0.4);
+        }
+
+        .price-tag {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .price-tag strong {
+            color: var(--accent);
+            font-size: 24px;
+        }
+
+        /* Hero Image / Mockup */
+        .hero-image {
+            position: relative;
+            z-index: 1;
+        }
+
+        .mockup-container {
+            position: relative;
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            aspect-ratio: 16/10;
+            background: #1e293b;
+        }
+
+        .mockup-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        /* Floating elements */
+        .floating-card {
+            position: absolute;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 2;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .card-1 { top: -20px; right: -20px; animation-delay: 0s; }
+        .card-2 { bottom: 20px; left: -40px; animation-delay: 2s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 20px;
+            background: #020617;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--glass);
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-10px);
+        }
+
+        .icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(0, 74, 173, 0.2), rgba(203, 108, 230, 0.2));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 24px;
+        }
+
+        .feature-card h3 {
+            margin-bottom: 16px;
+            font-size: 20px;
+        }
+
+        .feature-card p {
+            color: #94a3b8;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* Header Logo */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .logo {
+            font-weight: 900;
+            font-size: 24px;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container" style="display: flex; justify-content: space-between;">
+            <div class="logo">LUMATEK</div>
+            <div style="font-size: 12px; color: #94a3b8;">Software v2.1.1</div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="badge">Ahorra tiempo administrativo</span>
+                <h1>Automatiza tus <span>Constancias</span> Escolares</h1>
+                <p class="description">
+                    La herramienta definitiva para instituciones educativas. Genera, valida y distribuye certificados digitales con seguridad criptográfica en segundos.
+                </p>
+                
+                <div class="cta-group">
+                    <div>
+                        <a href="https://www.paypal.com/ncp/payment/8T3G7D9Y8R2XW" id="buy-btn" class="btn btn-primary">
+                            🛒 Comprar Licencia
+                        </a>
+                        <div class="price-tag">Por solo <strong>$499 MXN</strong> / año</div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; display: flex; gap: 20px; font-size: 14px; color: #64748b;">
+                    <span>✓ Entrega Inmediata</span>
+                    <span>✓ Pago Seguro PayPal</span>
+                    <span>✓ Soporte Técnico</span>
+                </div>
+            </div>
+
+            <div class="hero-image">
+                <div class="floating-card card-1">
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        <div style="width: 30px; height: 30px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center;">✓</div>
+                        <div>
+                            <div style="font-size: 12px; font-weight: 700;">Constancia Generada</div>
+                            <div style="font-size: 10px; opacity: 0.6;">Escuela Normal de Tenancingo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mockup-container">
+                    <!-- Usaremos un placeholder elegante mientras se carga la imagen real -->
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1200" alt="Lumatek Dashboard" class="mockup-img">
+                </div>
+
+                <div class="floating-card card-2">
+                    <div style="text-align: center;">
+                        <div style="font-size: 24px; font-weight: 900; color: var(--secondary);">QR SECURE</div>
+                        <div style="font-size: 10px; color: #94a3b8;">Validación Criptográfica</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="grid">
+            <div class="feature-card">
+                <div class="icon">🚀</div>
+                <h3>Velocidad Extrema</h3>
+                <p>Genera cientos de documentos en formato PDF a partir de una lista de Excel en menos de un minuto.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🛡️</div>
+                <h3>Validación QR</h3>
+                <p>Cada constancia incluye un código QR único que permite verificar su autenticidad desde cualquier celular.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎨</div>
+                <h3>Personalización</h3>
+                <p>Usa tus propias plantillas de Word o PowerPoint. El sistema inyecta los datos automáticamente.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Lumatek. Todos los derechos reservados.</p>
+        <p style="margin-top: 10px;">Impulsando la transformación digital en la educación.</p>
+    </footer>
+
+    <script>
+        // Efecto de scroll suave
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Tracking de clicks en el botón (Opcional)
+        document.getElementById('buy-btn').addEventListener('click', () => {
+            console.log('Intención de compra registrada');
+        });
+    </script>
+</body>
+</html>

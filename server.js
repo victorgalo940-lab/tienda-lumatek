@@ -24,7 +24,7 @@ const getEmailHTML = (nombre, clave) => `
 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border: 1px solid #e0e0e0;">
     <!-- Encabezado con Logo e Imagen -->
     <div style="background: linear-gradient(135deg, #004aad 0%, #cb6ce6 50%, #ff914d 100%); padding: 40px 20px; text-align: center;">
-        <img src="https://i.imgur.com/vH3yI9K.png" alt="Lumatek Logo" style="max-width: 250px; margin-bottom: 20px;">
+        <img src="https://i.imgur.com/BOrNfV5.png" alt="Lumatek Logo" style="max-width: 250px; margin-bottom: 20px;">
         <h1 style="margin: 0; color: white; font-size: 22px; text-transform: uppercase; letter-spacing: 3px; text-shadow: 2px 2px 4px rgba(0,0,0,0.2);">¡Bienvenido a la Familia!</h1>
     </div>
 

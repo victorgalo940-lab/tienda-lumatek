@@ -1,0 +1,15 @@
+name: Despertador Lumatek (Keep Alive)
+
+on:
+  schedule:
+    - cron: '*/14 * * * *' # Ejecuta cada 14 minutos
+  workflow_dispatch: # Permite ejecutar manualmente si es necesario
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Store Server
+        run: curl -s https://tienda-lumatek.onrender.com > /dev/null
+      - name: Ping Licenses Server
+        run: curl -s https://lumatek-licencias.onrender.com > /dev/null

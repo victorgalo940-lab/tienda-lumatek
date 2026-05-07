@@ -1,32 +1,21 @@
 require('dotenv').config();
 const express = require('express');
 const { createClient } = require('@supabase/supabase-js');
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
 
 const app = express();
 app.use(express.json());
 
 const port = process.env.PORT || 5000;
 
-// Configuración de Supabase (Usamos Service Role para tener permisos de bypass RLS si es necesario)
+// Configuración de Supabase
 const supabase = createClient(
     process.env.SUPABASE_URL, 
     process.env.SUPABASE_SERVICE_ROLE_KEY
 );
 
-// Configuración de Nodemailer (Namecheap SMTP)
-const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: process.env.SMTP_PORT,
-    secure: process.env.SMTP_PORT == 465, // true para 465, false para 587
-    auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-    },
-    tls: {
-        rejectUnauthorized: false // Ayuda con algunos problemas de certificados en nubes
-    }
-});
+// Configuración de Resend (Email API)
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 /**
  * Plantilla de Email HTML Premium
@@ -68,7 +57,7 @@ app.post('/api/nueva-venta', async (req, res) => {
 
     console.log(`📩 Nuevo Webhook de Venta recibido: ${event.event_type}`);
 
-    if (event.event_type === 'PAYMENT.CAPTURE.COMPLETED') {
+    if (event.event_type === 'PAYMENT.CAPTURE.COMPLETED' || event.event_type === 'MOCK_TEST') {
         const resource = event.resource;
         const buyer = resource.payer;
         const email = buyer.email_address;
@@ -78,7 +67,7 @@ app.post('/api/nueva-venta', async (req, res) => {
         console.log(`🛒 Venta detectada: ${nombre} (${email})`);
 
         try {
-            // --- LLAMADA A LA FUNCIÓN RPC DE SUPABASE (Atomic Concurrency) ---
+            // --- LLAMADA A LA FUNCIÓN RPC DE SUPABASE ---
             const { data: clave, error } = await supabase.rpc('asignar_licencia_segura', {
                 p_email: email,
                 p_nombre: nombre,
@@ -92,17 +81,20 @@ app.post('/api/nueva-venta', async (req, res) => {
 
             console.log(`🔑 Licencia asignada correctamente: ${clave}`);
 
-            // --- ENVÍO DE EMAIL ---
-            const mailOptions = {
-                from: `"Lumatek Software" <${process.env.SMTP_USER}>`,
-                to: email,
+            // --- ENVÍO DE EMAIL CON RESEND (API) ---
+            const { data, error: mailError } = await resend.emails.send({
+                from: process.env.EMAIL_FROM || 'Lumatek Software <onboarding@resend.dev>',
+                to: [email],
                 subject: '🚀 Tu Licencia Lumatek está lista - Descarga el programa',
                 html: getEmailHTML(nombre, clave)
-            };
+            });
 
-            await transporter.sendMail(mailOptions);
-            console.log(`📧 Correo de entrega enviado a: ${email}`);
+            if (mailError) {
+                console.error('❌ Error de Resend:', mailError);
+                return res.status(500).send('Error enviando correo');
+            }
 
+            console.log(`📧 Correo enviado con éxito (ID: ${data.id})`);
             res.status(200).send('Venta procesada con éxito');
 
         } catch (err) {
@@ -114,8 +106,8 @@ app.post('/api/nueva-venta', async (req, res) => {
     }
 });
 
-app.get('/health', (req, res) => res.send('Tienda Lumatek Operativa 🚀'));
+app.get('/health', (req, res) => res.send('Tienda Lumatek Operativa con Resend 🚀'));
 
 app.listen(port, () => {
-    console.log(`🚀 Store Server escuchando en puerto ${port}`);
+    console.log(`🚀 Store Server escuchando en puerto ${port} (Resend Edition)`);
 });

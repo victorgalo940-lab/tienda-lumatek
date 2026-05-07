@@ -1,0 +1,8 @@
+node_modules/
+.env
+*.sqlite
+licencias.sqlite
+licencias_generadas.txt
+migrar_v2.js
+migrar_a_nube.js
+agregar_master_key.js

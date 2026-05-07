@@ -35,8 +35,11 @@ const getEmailHTML = (nombre, clave) => `
         <!-- Tarjeta de Licencia -->
         <div style="background: #f8f9fa; border: 2px dashed #cb6ce6; border-radius: 10px; padding: 25px; margin: 30px 0; text-align: center;">
             <p style="margin: 0; color: #888; font-size: 11px; text-transform: uppercase; font-weight: bold; letter-spacing: 1px;">Tu Clave de Licencia Unica:</p>
-            <p style="margin: 15px 0; font-family: 'Courier New', Courier, monospace; font-size: 32px; color: #004aad; font-weight: bold; letter-spacing: 5px;">${clave}</p>
-            <p style="margin: 0; color: #ff914d; font-size: 12px; font-weight: bold;">⚠️ No compartas esta clave con nadie.</p>
+            <div style="margin: 15px 0; padding: 10px; background: white; border-radius: 5px; border: 1px solid #ddd; display: inline-block;">
+                <p style="margin: 0; font-family: 'Courier New', Courier, monospace; font-size: 32px; color: #004aad; font-weight: bold; letter-spacing: 5px;">${clave}</p>
+            </div>
+            <p style="margin: 10px 0 0 0; color: #666; font-size: 13px;">Copia la licencia incluyendo el guion y pégala en el programa de instalación.</p>
+            <p style="margin: 10px 0 0 0; color: #ff914d; font-size: 12px; font-weight: bold;">⚠️ No compartas esta clave con nadie.</p>
         </div>
 
         <p style="font-size: 15px;">Para comenzar a trabajar, descarga e instala el software haciendo clic en el botón de abajo:</p>

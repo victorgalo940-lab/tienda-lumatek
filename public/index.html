@@ -98,7 +98,7 @@
             font-size: 1.15rem;
             color: #94a3b8;
             margin-bottom: 40px;
-            max-width: 550px;
+            max-width: 580px;
         }
 
         .pulse-text {
@@ -178,10 +178,10 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        /* Posiciones exactas como en la imagen de "Antes" */
+        /* Ajuste de posición para no tapar la imagen central */
         .card-constancia { 
-            top: 15%; 
-            right: -8%; 
+            top: -10%; /* Elevado fuera de la imagen */
+            right: -5%; 
             animation-delay: 0s; 
         }
         
@@ -201,7 +201,7 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 40px;
+            padding: 20px 60px;
             z-index: 100;
             backdrop-filter: blur(15px);
             background: rgba(15, 23, 42, 0.7);
@@ -214,16 +214,19 @@
             font-weight: 900;
             letter-spacing: 2px;
             font-size: 24px;
-            color: white;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .logo-img {
-            height: 45px;
+            height: 55px;
             border-radius: 50%;
-            opacity: 0.9;
+            box-shadow: 0 0 20px rgba(203, 108, 230, 0.3);
         }
 
-        /* Modal Premium */
+        /* Modal */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -256,10 +259,7 @@
             cursor: pointer;
             font-size: 32px;
             color: #64748b;
-            transition: 0.3s;
         }
-
-        .close-modal:hover { color: white; }
 
         .feature-item {
             display: grid;
@@ -284,7 +284,7 @@
 
     <header class="header">
         <div class="logo-text">LUMATEK</div>
-        <img src="logo_circular.png" alt="Lumatek" class="logo-img">
+        <img src="logo_circular.png" alt="Logo Lumatek" class="logo-img">
     </header>
 
     <section class="hero">
@@ -301,28 +301,28 @@
                         <a href="https://www.paypal.com/ncp/payment/8T3G7D9Y8R2XW" id="buy-btn" class="btn btn-primary">
                             🛒 Comprar Licencia
                         </a>
-                        <div style="margin-top: 15px; font-size: 15px; color: #94a3b8;">
+                        <div style="margin-top: 20px; font-size: 15px; color: #94a3b8;">
                             <span style="text-decoration: line-through; opacity: 0.5;">$999 MXN</span> 
                             <strong style="color: var(--accent); font-size: 22px; margin-left: 10px;">$499 MXN</strong> / año
-                            <div class="pulse-text" style="color: var(--secondary); font-weight: 800; display: block; margin-top: 8px; font-size: 14px;">🔥 ¡50% OFF - LICENCIAS LIMITADAS!</div>
+                            <div class="pulse-text" style="color: var(--secondary); font-weight: 800; display: block; margin-top: 10px; font-size: 14px;">🔥 ¡50% OFF - LICENCIAS LIMITADAS!</div>
                         </div>
                     </div>
                 </div>
 
-                <div style="margin-top: 40px; display: flex; align-items: center; gap: 15px; color: #94a3b8; background: rgba(255,255,255,0.03); padding: 15px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); max-width: 460px;">
-                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" style="height: 22px;">
-                    <span style="font-size: 12px;">Pago seguro vía <strong>PayPal</strong> para tarjetas de Débito o Crédito</span>
+                <div style="margin-top: 45px; display: flex; align-items: center; gap: 15px; color: #cbd5e1; background: rgba(255,255,255,0.03); padding: 18px 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.08); max-width: 480px;">
+                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" style="height: 24px;">
+                    <span style="font-size: 13px;">Pago seguro por plataforma <strong>PayPal</strong> (Débito o Crédito)</span>
                 </div>
             </div>
 
             <div class="hero-image" style="position: relative;">
-                <!-- Tarjeta Flotante: Constancia Generada (Derecha superior) -->
+                <!-- Tarjeta Flotante: Constancia Generada (Derecha superior - Corregida para no estorbar) -->
                 <div class="floating-card card-constancia">
                     <div style="display: flex; gap: 12px; align-items: center;">
-                        <div style="width: 28px; height: 28px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">✓</div>
+                        <div style="width: 30px; height: 30px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);">✓</div>
                         <div>
                             <div style="font-size: 11px; font-weight: 800;">Constancia Generada</div>
-                            <div style="font-size: 9px; opacity: 0.6;">Instituto Educativo Lumatek</div>
+                            <div style="font-size: 9px; opacity: 0.7;">Instituto Educativo Lumatek</div>
                         </div>
                     </div>
                 </div>
@@ -335,7 +335,7 @@
                 <div class="floating-card card-qr">
                     <div style="text-align: center;">
                         <div style="font-size: 18px; font-weight: 900; color: var(--secondary); letter-spacing: 1px;">QR SEGURO</div>
-                        <div style="font-size: 10px; color: #ffffff; font-weight: 700; text-transform: uppercase; margin-top: 2px;">Validación en línea</div>
+                        <div style="font-size: 10px; color: #ffffff; font-weight: 800; text-transform: uppercase; margin-top: 4px;">Validación en línea</div>
                     </div>
                 </div>
 
@@ -346,7 +346,7 @@
         </div>
     </section>
 
-    <!-- Modal Informativo -->
+    <!-- Modal -->
     <div id="infoModal" class="modal-overlay">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal()">&times;</span>
@@ -380,7 +380,7 @@
             </div>
 
             <div style="background: rgba(203, 108, 230, 0.05); padding: 25px; border-radius: 20px; border: 1px solid rgba(203, 108, 230, 0.2);">
-                <h4 style="margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">🛡️ Especificaciones del Sistema</h4>
+                <h4 style="margin-bottom: 15px;">🛡️ Especificaciones del Sistema</h4>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 14px; color: #cbd5e1;">
                     <ul style="list-style: none;">
                         <li>🚀 +500 documentos por minuto</li>

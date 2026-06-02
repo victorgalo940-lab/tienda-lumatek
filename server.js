@@ -26,7 +26,10 @@ const port = process.env.PORT || 5000;
 // Configuración de Supabase
 const supabase = createClient(
     process.env.SUPABASE_URL, 
-    process.env.SUPABASE_SERVICE_ROLE_KEY
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    {
+        auth: { persistSession: false }
+    }
 );
 
 // Configuración de Resend (Email API)

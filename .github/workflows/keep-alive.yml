@@ -11,5 +11,5 @@ jobs:
     steps:
       - name: Ping Store Server
         run: curl -s https://tienda-lumatek.onrender.com > /dev/null
-      - name: Ping Licenses Server
-        run: curl -s https://lumatek-licencias.onrender.com > /dev/null
+      - name: Ping Licenses Server (mantiene despierto Render y toca la BD en Supabase)
+        run: curl -s https://lumatek-licencias.onrender.com/api/health-db > /dev/null

@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumatek | Automatización de Constancias</title>
+    <title>Lumatek | Tienda de Software Profesional</title>
     <!-- Open Graph Tags for Social Media -->
-    <meta property="og:title" content="Lumatek: Sistema de Constancias Automatizado">
-    <meta property="og:description" content="Ahorra horas de trabajo administrativo con el sistema de generación y validación de constancias líder en México.">
+    <meta property="og:title" content="Lumatek: Tienda de Software Profesional">
+    <meta property="og:description" content="Automatiza e impulsa tu productividad con herramientas de software premium. Adquiere Lumatek Constancias y PDF Tool Pro.">
     <meta property="og:image" content="https://i.imgur.com/BOrNfV5.png">
     <meta property="og:url" content="https://tienda-lumatek.onrender.com">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -37,30 +37,19 @@
         /* Hero Section */
         .hero {
             position: relative;
-            min-height: 100vh;
+            min-height: 55vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 100px 20px;
-            background: radial-gradient(circle at 0% 0%, rgba(0, 74, 173, 0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 100% 100%, rgba(203, 108, 230, 0.1) 0%, transparent 50%);
+            padding: 100px 20px 40px 20px;
+            background: radial-gradient(circle at 0% 0%, rgba(0, 74, 173, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 100% 100%, rgba(203, 108, 230, 0.15) 0%, transparent 50%);
+            text-align: center;
         }
 
-        .container {
-            max-width: 1200px;
+        .hero-content {
+            max-width: 800px;
             margin: 0 auto;
-            width: 100%;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        @media (max-width: 968px) {
-            .container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
         }
 
         .badge {
@@ -77,10 +66,10 @@
         }
 
         h1 {
-            font-size: clamp(2.5rem, 5vw, 3.8rem);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 24px;
+            line-height: 1.15;
+            margin-bottom: 20px;
             background: linear-gradient(to right, #fff, #94a3b8);
             -webkit-background-clip: text;
             background-clip: text;
@@ -97,103 +86,211 @@
         .description {
             font-size: 1.15rem;
             color: #94a3b8;
-            margin-bottom: 40px;
-            max-width: 580px;
+            margin-bottom: 30px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
-        .pulse-text {
-            animation: pulse 2s infinite ease-in-out;
-            display: inline-block;
+        /* Products Section */
+        .products-section {
+            padding: 40px 20px 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.05); opacity: 0.8; }
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        /* Glassmorphism Product Card */
+        .product-card {
+            background: rgba(30, 41, 59, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            backdrop-filter: blur(16px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .product-card.pdftool::before {
+            background: linear-gradient(90deg, #6366f1, #a855f7, #ec4899);
+        }
+
+        .product-badge {
+            align-self: flex-start;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            background: rgba(0, 74, 173, 0.15);
+            color: #38bdf8;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+        }
+
+        .product-card.pdftool .product-badge {
+            background: rgba(168, 85, 247, 0.15);
+            color: #f472b6;
+            border: 1px solid rgba(244, 114, 182, 0.2);
+        }
+
+        .product-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+
+        .product-description {
+            color: #94a3b8;
+            font-size: 15px;
+            margin-bottom: 25px;
+            min-height: 68px;
+        }
+
+        .price-box {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+
+        .price-original {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 14px;
+        }
+
+        .price-current {
+            font-size: 28px;
+            font-weight: 900;
+            color: var(--accent);
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        .price-period {
+            font-size: 14px;
+            color: #94a3b8;
+            font-weight: normal;
+        }
+
+        .product-features {
+            list-style: none;
+            margin-bottom: 35px;
+        }
+
+        .product-features li {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-features li::before {
+            content: '✓';
+            color: #22c55e;
+            font-weight: bold;
         }
 
         .btn {
             display: inline-flex;
             align-items: center;
-            padding: 18px 36px;
+            justify-content: center;
+            padding: 16px 28px;
             border-radius: 12px;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 700;
             text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.3s ease;
             cursor: pointer;
             border: none;
-            gap: 12px;
+            gap: 10px;
+            width: 100%;
         }
 
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            box-shadow: 0 10px 30px rgba(0, 74, 173, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 74, 173, 0.2);
         }
 
         .btn-primary:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 74, 173, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 74, 173, 0.35);
+        }
+
+        .product-card.pdftool .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.2);
+        }
+
+        .product-card.pdftool .btn-primary:hover {
+            box-shadow: 0 15px 30px rgba(99, 102, 241, 0.35);
         }
 
         .btn-info {
-            background: linear-gradient(135deg, #334155, #0f172a);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            margin-top: 30px;
-            width: 100%;
-            justify-content: center;
+            background: transparent;
+            color: #cbd5e1;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 12px;
         }
 
         .btn-info:hover {
             border-color: var(--secondary);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(203, 108, 230, 0.2);
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.02);
         }
 
-        .mockup-container {
-            position: relative;
+        .product-card.pdftool .btn-info:hover {
+            border-color: #a855f7;
+        }
+
+        /* Banner */
+        .payment-banner {
+            margin-top: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            color: #cbd5e1;
+            background: rgba(255,255,255,0.03);
+            padding: 18px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.08);
             width: 100%;
-            border-radius: 24px;
-            overflow: hidden;
-            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            aspect-ratio: 16/10;
-            background: #1e293b;
-            z-index: 1;
-        }
-
-        .mockup-img { width: 100%; height: 100%; object-fit: cover; }
-
-        .floating-card {
-            position: absolute;
-            background: var(--glass);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 12px 20px;
-            border-radius: 14px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
-            z-index: 5;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Ajuste de posición para no tapar la imagen central */
-        .card-constancia { 
-            top: -10%; /* Elevado fuera de la imagen */
-            right: -5%; 
-            animation-delay: 0s; 
-        }
-        
-        .card-qr { 
-            top: 50%; 
-            left: -12%; 
-            animation-delay: 2s; 
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
         }
 
         /* Header */
@@ -201,13 +298,14 @@
             position: fixed;
             top: 0;
             width: 100%;
-            padding: 20px 60px;
+            padding: 15px 60px;
             z-index: 100;
             backdrop-filter: blur(15px);
             background: rgba(15, 23, 42, 0.7);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .logo-text {
@@ -221,12 +319,12 @@
         }
 
         .logo-img {
-            height: 55px;
+            height: 45px;
             border-radius: 50%;
             box-shadow: 0 0 20px rgba(203, 108, 230, 0.3);
         }
 
-        /* Modal */
+        /* Modal styling */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -261,6 +359,10 @@
             color: #64748b;
         }
 
+        .close-modal:hover {
+            color: white;
+        }
+
         .feature-item {
             display: grid;
             grid-template-columns: 120px 1fr;
@@ -278,6 +380,9 @@
         .feature-item h3 { color: var(--secondary); margin-bottom: 8px; font-weight: 800; }
         .feature-item p { color: #94a3b8; font-size: 15px; }
 
+        .modal-pdftool .feature-item h3 {
+            color: #a855f7;
+        }
     </style>
 </head>
 <body>
@@ -288,70 +393,90 @@
     </header>
 
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <span class="badge">Ecosistema Digital Profesional</span>
-                <h1>Automatiza tus <span>Constancias</span> Instituciones Empresas Escuelas</h1>
-                <p class="description">
-                    La herramienta definitiva para ahorrar tiempo administrativo. Genera, valida y distribuye certificados digitales con seguridad criptográfica en segundos.
-                </p>
-                
-                <div class="cta-group">
-                    <div>
-                        <a href="https://www.paypal.com/ncp/payment/9AT32HVAVKWKC" id="buy-btn" class="btn btn-primary">
-                            🛒 Comprar Licencia
-                        </a>
-                        <div style="margin-top: 20px; font-size: 15px; color: #94a3b8;">
-                            <span style="text-decoration: line-through; opacity: 0.5;">$999 MXN</span> 
-                            <strong style="color: var(--accent); font-size: 22px; margin-left: 10px;">$499 MXN</strong> / año
-                            <div class="pulse-text" style="color: var(--secondary); font-weight: 800; display: block; margin-top: 10px; font-size: 14px;">🔥 ¡50% OFF - LICENCIAS LIMITADAS!</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div style="margin-top: 45px; display: flex; align-items: center; gap: 15px; color: #cbd5e1; background: rgba(255,255,255,0.03); padding: 18px 25px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.08); max-width: 480px;">
-                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" style="height: 24px;">
-                    <span style="font-size: 13px;">Pago seguro por plataforma <strong>PayPal</strong> (Débito o Crédito)</span>
-                </div>
-            </div>
-
-            <div class="hero-image" style="position: relative;">
-                <!-- Tarjeta Flotante: Constancia Generada (Derecha superior - Corregida para no estorbar) -->
-                <div class="floating-card card-constancia">
-                    <div style="display: flex; gap: 12px; align-items: center;">
-                        <div style="width: 30px; height: 30px; background: #22c55e; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; box-shadow: 0 0 15px rgba(34, 197, 94, 0.4);">✓</div>
-                        <div>
-                            <div style="font-size: 11px; font-weight: 800;">Constancia Generada</div>
-                            <div style="font-size: 9px; opacity: 0.7;">Instituto Educativo Lumatek</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mockup-container">
-                    <img src="hero.png" alt="Software Lumatek" class="mockup-img">
-                </div>
-
-                <!-- Tarjeta Flotante: QR SEGURO (Izquierda media) -->
-                <div class="floating-card card-qr">
-                    <div style="text-align: center;">
-                        <div style="font-size: 18px; font-weight: 900; color: var(--secondary); letter-spacing: 1px;">QR SEGURO</div>
-                        <div style="font-size: 10px; color: #ffffff; font-weight: 800; text-transform: uppercase; margin-top: 4px;">Validación en línea</div>
-                    </div>
-                </div>
-
-                <button class="btn btn-info" onclick="openModal()">
-                    🔍 Conocer todas las funciones
-                </button>
-            </div>
+        <div class="hero-content">
+            <span class="badge">Ecosistema Digital Profesional</span>
+            <h1>Herramientas Profesionales de <span>Software</span></h1>
+            <p class="description">
+                Soluciones avanzadas para automatización y gestión de documentos. Incrementa la productividad y seguridad de tu organización.
+            </p>
         </div>
     </section>
 
-    <!-- Modal -->
-    <div id="infoModal" class="modal-overlay">
+    <section class="products-section">
+        <div class="products-grid">
+            <!-- PRODUCT 1: Lumatek Constancias -->
+            <div class="product-card">
+                <div>
+                    <div class="product-badge">Automatización</div>
+                    <h2 class="product-title">Lumatek Constancias</h2>
+                    <p class="product-description">Genera, valida y distribuye certificados digitales con firma y seguridad criptográfica en segundos.</p>
+                    
+                    <div class="price-box">
+                        <div class="price-original">$999 MXN</div>
+                        <div class="price-current">
+                            $499 MXN <span class="price-period">/ año</span>
+                        </div>
+                    </div>
+
+                    <ul class="product-features">
+                        <li>+500 documentos por minuto</li>
+                        <li>Validación QR Segura en la nube</li>
+                        <li>Branding personalizable</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="https://www.paypal.com/ncp/payment/9AT32HVAVKWKC" class="btn btn-primary">
+                        🛒 Adquirir Licencia
+                    </a>
+                    <button class="btn btn-info" onclick="openModal('constancias')">
+                        🔍 Conocer funciones
+                    </button>
+                </div>
+            </div>
+
+            <!-- PRODUCT 2: PDF Tool Pro -->
+            <div class="product-card pdftool">
+                <div>
+                    <div class="product-badge">Utilidades PDF</div>
+                    <h2 class="product-title">PDF Tool Pro</h2>
+                    <p class="product-description">El convertidor y editor de archivos PDF más rápido y ligero. Une, divide y optimiza tus documentos.</p>
+                    
+                    <div class="price-box">
+                        <div class="price-original">$999 MXN</div>
+                        <div class="price-current">
+                            $499 MXN <span class="price-period">/ año</span>
+                        </div>
+                    </div>
+
+                    <ul class="product-features">
+                        <li>Conversión ultra-rápida de imágenes</li>
+                        <li>Unión y organización de PDFs</li>
+                        <li>Compresión y calidad configurable</li>
+                    </ul>
+                </div>
+                <div>
+                    <a href="https://www.paypal.com/ncp/payment/9AT32HVAVKWKC" class="btn btn-primary">
+                        🛒 Adquirir Licencia
+                    </a>
+                    <button class="btn btn-info" onclick="openModal('pdftool')">
+                        🔍 Conocer funciones
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="payment-banner">
+            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" style="height: 24px;">
+            <span style="font-size: 13px;">Pago 100% seguro a través de la plataforma de <strong>PayPal</strong> (Tarjeta o Saldo)</span>
+        </div>
+    </section>
+
+    <!-- Modal 1: Lumatek Constancias -->
+    <div id="modalConstancias" class="modal-overlay">
         <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <span class="close-modal" onclick="closeModal('constancias')">&times;</span>
             <div style="text-align: center; margin-bottom: 45px;">
-                <h2 style="font-size: 30px; font-weight: 900;">LUMATEK <span style="color: var(--secondary);">ECOSYSTEM</span></h2>
+                <h2 style="font-size: 30px; font-weight: 900;">LUMATEK <span style="color: var(--secondary);">CONSTANCIAS</span></h2>
                 <p style="color: #64748b; margin-top: 10px;">Potencia la eficiencia de tu organización con automatización inteligente.</p>
             </div>
 
@@ -397,17 +522,75 @@
         </div>
     </div>
 
+    <!-- Modal 2: PDF Tool Pro -->
+    <div id="modalPdfTool" class="modal-overlay modal-pdftool">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('pdftool')">&times;</span>
+            <div style="text-align: center; margin-bottom: 45px;">
+                <h2 style="font-size: 30px; font-weight: 900; color: #a855f7;">PDF <span style="color: #ec4899;">TOOL PRO</span></h2>
+                <p style="color: #64748b; margin-top: 10px;">La navaja suiza para el procesamiento rápido de documentos PDF.</p>
+            </div>
+
+            <div class="feature-item">
+                <img src="screen2.png" alt="Conversión">
+                <div>
+                    <h3>1. Conversión de Imágenes</h3>
+                    <p>Convierte múltiples formatos de imagen (PNG, JPG, BMP) a PDF en segundos. Ajusta márgenes, escala de grises y compresión óptima de forma visual.</p>
+                </div>
+            </div>
+
+            <div class="feature-item">
+                <img src="screen3.png" alt="Unión">
+                <div>
+                    <h3>2. Fusión y Combinación Directa</h3>
+                    <p>Arrastra, ordena y une múltiples archivos PDF en un solo documento consolidado sin perder calidad ni formato original.</p>
+                </div>
+            </div>
+
+            <div style="background: rgba(168, 85, 247, 0.05); padding: 25px; border-radius: 20px; border: 1px solid rgba(168, 85, 247, 0.2);">
+                <h4 style="margin-bottom: 15px; color: #a855f7;">⚡ Rendimiento y Seguridad Local</h4>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 14px; color: #cbd5e1;">
+                    <ul style="list-style: none;">
+                        <li>⚡ Procesamiento 100% local (sin subir archivos a internet)</li>
+                        <li>🔒 Máxima confidencialidad para tus datos sensibles</li>
+                        <li>💼 Interfaz simplificada de alta productividad</li>
+                    </ul>
+                    <ul style="list-style: none;">
+                        <li>📐 Selección de calidad y compresión de archivos</li>
+                        <li>🚀 Activación inmediata mediante licencia anual</li>
+                        <li>✉️ Soporte técnico prioritario de por vida</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        function openModal() {
-            document.getElementById('infoModal').style.display = 'block';
+        function openModal(type) {
+            if (type === 'constancias') {
+                document.getElementById('modalConstancias').style.display = 'block';
+            } else if (type === 'pdftool') {
+                document.getElementById('modalPdfTool').style.display = 'block';
+            }
             document.body.style.overflow = 'hidden';
         }
-        function closeModal() {
-            document.getElementById('infoModal').style.display = 'none';
+        
+        function closeModal(type) {
+            if (type === 'constancias') {
+                document.getElementById('modalConstancias').style.display = 'none';
+            } else if (type === 'pdftool') {
+                document.getElementById('modalPdfTool').style.display = 'none';
+            }
             document.body.style.overflow = 'auto';
         }
+
         window.onclick = function(event) {
-            if (event.target == document.getElementById('infoModal')) closeModal();
+            if (event.target == document.getElementById('modalConstancias')) {
+                closeModal('constancias');
+            }
+            if (event.target == document.getElementById('modalPdfTool')) {
+                closeModal('pdftool');
+            }
         }
     </script>
 </body>
